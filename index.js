@@ -28,10 +28,6 @@ app.listen(PORT, () => {
   console.log(`server is running`);
 });
 
-app.use("/",(req,res)=>{
-  res.send("<h1>welcome to suby</h1>");
-})
-
 app.use("/vendor", vendorRoutes);
 app.use("/firm", firmRoutes);
 app.use("/product",productRoutes);
