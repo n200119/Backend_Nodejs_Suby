@@ -11,7 +11,7 @@ dotEnv.config();
 
 const app = express();
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 mongoose
   .connect(process.env.MONGO_URI)
@@ -27,6 +27,10 @@ app.use(bodyParser.json());
 app.listen(PORT, () => {
   console.log(`server is running`);
 });
+
+app.use("/",(req,res)=>{
+  res.send("<h1>welcome to suby</h1>");
+})
 
 app.use("/vendor", vendorRoutes);
 app.use("/firm", firmRoutes);
