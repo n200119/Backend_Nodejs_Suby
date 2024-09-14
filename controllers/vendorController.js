@@ -82,9 +82,15 @@ const getVendorById = async (req, res) => {
       return res.status(401).json("no vendor is present with given id");
     }
 
-    const vendorFirmId=vendor.firm[0]._id;
+    try {
+      const vendorFirmId=vendor.firm[0]._id;
     res.status(200).json({ vendor,vendorFirmId });
     console.log(vendor,vendorFirmId);
+      
+    } catch (error) {
+      res.status(500).json("error which i known");
+      
+    }
   } catch (error) {
     console.log(`error at single vendors getting:${error}`);
     res.status(500).json("internal server error");
