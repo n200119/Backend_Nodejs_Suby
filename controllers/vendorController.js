@@ -90,7 +90,7 @@ const getVendorById = async (req, res) => {
       }
       else
       {
-        const vendorFirmId=undefined;
+        const vendorFirmId=false;
         res.status(200).json({ vendor,vendorFirmId });
         console.log(vendor,vendorFirmId);
       }  
