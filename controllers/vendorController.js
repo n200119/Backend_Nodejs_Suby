@@ -83,10 +83,17 @@ const getVendorById = async (req, res) => {
     }
 
     try {
+      if(vendor.firm.length>0){
       const vendorFirmId=vendor.firm[0]._id;
     res.status(200).json({ vendor,vendorFirmId });
     console.log(vendor,vendorFirmId);
-      
+      }
+      else
+      {
+        const vendorFirmId=undefined;
+        res.status(200).json({ vendor,vendorFirmId });
+        console.log(vendor,vendorFirmId);
+      }  
     } catch (error) {
       res.status(500).json("error which i known");
       
