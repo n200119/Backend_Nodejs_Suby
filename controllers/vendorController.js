@@ -45,11 +45,13 @@ const vendorLogin = async (req, res) => {
       process.env.WhatIsYourName,
       { expiresIn: "1h" }
     );
-    res.status(200).json({ success: "Login Successfull", token });
+     const vendorId = vendorEmail._id;
+    res.status(200).json({ success: "Login Successfull", token,vendorId });
     console.log(email, "this is token", token);
+    console.log(vendorId);
   } catch (error) {
     console.log(`error at login:${error}`);
-    res.send(500).json({ message: `${error}` });
+    res.status(500).json({ message: `${error}` });
   }
 };
 
@@ -80,7 +82,9 @@ const getVendorById = async (req, res) => {
       return res.status(401).json("no vendor is present with given id");
     }
 
-    res.status(200).json({ vendor });
+    const vendorFirmId=vendor.firm[0]._id;
+    res.status(200).json({ vendor,vendorFirmId });
+    console.log(vendor,vendorFirmId);
   } catch (error) {
     console.log(`error at single vendors getting:${error}`);
     res.status(500).json("internal server error");
